@@ -7,8 +7,19 @@ $linkedinClientSecret = getenv('LINKEDIN_APP_CLIENT_SECRET');
 
 
 
-$urlOfThisFile = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . "{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
+//determine if file is on http or https
+$isSecure = false;
+if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
+    $isSecure = true;
+}
+elseif (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https' || !empty($_SERVER['HTTP_X_FORWARDED_SSL']) && $_SERVER['HTTP_X_FORWARDED_SSL'] == 'on') {
+    $isSecure = true;
+}
+$REQUEST_PROTOCOL = $isSecure ? 'https' : 'http';
 
+
+//determine and encode the url of this file
+$urlOfThisFile = $REQUEST_PROTOCOL . "{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
 $encodedUrlOfThisFile = urlencode($urlOfThisFile);
 
 
