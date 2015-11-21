@@ -1,0 +1,16 @@
+{
+  "env": {
+    "HUBSPOT_API_KEY": {
+      "required": true
+    },
+    "THANK_YOU_PAGE_URL": {
+      "required": "true"
+    },
+    "LINKEDIN_APP_CLIENT_ID": {
+      "required": "true"
+    },
+    "LINKEDIN_APP_CLIENT_SECRET": {
+      "required": "true"
+    }
+  }
+}
