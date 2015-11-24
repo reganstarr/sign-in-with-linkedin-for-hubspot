@@ -20,6 +20,10 @@ $REQUEST_PROTOCOL = $isSecure ? 'https' : 'http';
 
 //determine and encode the url of this file
 $urlOfThisFile = $REQUEST_PROTOCOL . "://" . "{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
+
+echo $urlOfThisFile;
+exit;
+
 $encodedUrlOfThisFile = urlencode($urlOfThisFile);
 
 
